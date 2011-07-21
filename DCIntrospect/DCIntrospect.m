@@ -77,6 +77,9 @@ id UITextInputTraits_valueForKey(id self, SEL _cmd, NSString *key)
 	}
 	
 	IMP valueForKey = [objc_getAssociatedObject([self class], originalValueForKeyIMPKey) pointerValue];
+	
+	if(nil == valueForKey) return nil;
+	
 	if ([textInputTraitsProperties containsObject:key])
 	{
 		id textInputTraits = valueForKey(self, _cmd, @"textInputTraits");
